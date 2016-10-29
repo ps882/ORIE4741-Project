@@ -52,6 +52,8 @@ There was a large variation in values of skew. The average value around 3.14 was
 
 ## 2. Exploratory Data Analysis
 
+We grouped the data into male and female and looked at the statistics of the features in each class. We then carefully inspected the mean and standard deviations of both the classes for each of the features and picked those features that varied significantly. We found that the distributions of the features 'meanfun', 'IQR', and 'Q25' were quite discriminative and potentially very useful features to be used in the models that we develop. We then plotted them using Box Plots. 
+
 ![alt text][box_IQR]
 [box_IQR]: https://github.com/SivaSankalp/ORIE4741-Project/raw/master/box_IQR.png "IQR Box Plot"
 
@@ -63,6 +65,15 @@ There was a large variation in values of skew. The average value around 3.14 was
 
 ## 3. Preliminary testing
 
+We split the data into training and testing and performed some initial testing. The evaluation metric we are using to assess the performance of our models is accuracy. 
+
+We tried three baselines. 
+
+- As we saw in the previous section, the feature "meanfun" seems to carry a lot of information regarding the gender so we decided to try a simple thresholding on this feature at 0.14. This gave us an accuracy of 95% which is pretty good for a baseline. 
+- Similarly we tried the same approach on "Q25" feature at 0.145 threshold. This gave us an accuracy of 86%. 
+- Finally, we tried fitting a simple perceptron model but as we expected, it did not converge. Clearly, the data is not linearly separable. 
+
 ## 4. Future Plan
-* We are considering splitting the data and showing distribution or separate regressions for male and female data and testing new/test sets onto each distribution.
-* Test with L1 regularizer to figure out which columns aren’t important to the data.
+* We are considering splitting the data and showing distribution or separate models for male and female data and testing new/test sets onto each distribution.
+* Test with L1 regularizer to figure out which features aren’t important in prediction. 
+* Try other discriminative models like Support Vector Machine (SVM) and Logistic Regression. 
